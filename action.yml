@@ -1,4 +1,4 @@
-name: 'Upload to Dropbox'
+name: 'dropbox-github-action'
 description: 'Uploads a file to Dropbox'
 inputs:
   dropbox-app-key:
