@@ -80,8 +80,8 @@ Now you are ready to upload the file to Dropbox with the following step in your 
     dropbox-app-key: ${{ secrets.DROPBOX_APP_KEY }}
     dropbox-app-secret: ${{ secrets.DROPBOX_APP_SECRET }}
     dropbox-refresh-token: ${{ secrets.DROPBOX_REFRESH_TOKEN }}
-    source_path: <Path to local file in the github action container space>
-    target_path: <Path to the file in the Dropbox. That is supposed to be under the app folder>
+    source-path: <Path to local file in the github action container space>
+    target-path: <Path to the file in the Dropbox. That is supposed to be under the app folder>
 ```
 
 
