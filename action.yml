@@ -30,6 +30,7 @@ runs:
       env:
         DROPBOX_ACCESS_TOKEN: ${{ env.DROPBOX_ACCESS_TOKEN }}      
       run: |
+        echo "::add-mask::$DROPBOX_ACCESS_TOKEN"
         curl -X POST https://content.dropboxapi.com/2/files/upload \
           --header "Authorization: Bearer $DROPBOX_ACCESS_TOKEN" \
           --header "Dropbox-API-Arg: {\"path\":\"${{ inputs.target-path }}\"}" \
