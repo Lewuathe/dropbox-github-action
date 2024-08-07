@@ -24,15 +24,14 @@ runs:
     - id: get-access-token
       shell: bash
       run: |
-        echo "DROPBOX_ACCESS_TOKEN=$(curl -s https://api.dropbox.com/oauth2/token -d refresh_token=${{ inputs.dropbox-refresh-token }} -d grant_type=refresh_token -d client_id=${{ inputs.dropbox-app-key }} -d client_secret=${{ inputs.dropbox-app-secret }} | jq -r '.access_token')" >> $GITHUB_ENV
+        access_token=$(curl -s https://api.dropbox.com/oauth2/token -d refresh_token=${{ inputs.dropbox-refresh-token }} -d grant_type=refresh_token -d client_id=${{ inputs.dropbox-app-key }} -d client_secret=${{ inputs.dropbox-app-secret }} | jq -r '.access_token')
+        echo "::add-mask::$access_token"
+        echo "access_token=$access_token" >> "$GITHUB_OUTPUT"        
     - id: upload-file
       shell: bash
-      env:
-        DROPBOX_ACCESS_TOKEN: ${{ env.DROPBOX_ACCESS_TOKEN }}      
       run: |
-        echo "::add-mask::$DROPBOX_ACCESS_TOKEN"
         curl -X POST https://content.dropboxapi.com/2/files/upload \
-          --header "Authorization: Bearer $DROPBOX_ACCESS_TOKEN" \
+          --header "Authorization: Bearer ${{ steps.get-access-token.outputs.access_token }}" \
           --header "Dropbox-API-Arg: {\"path\":\"${{ inputs.target-path }}\"}" \
           --header  "Content-Type: application/octet-stream" \
           --data-binary @${{ inputs.source-path }}
