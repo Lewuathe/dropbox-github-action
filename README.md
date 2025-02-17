@@ -82,6 +82,7 @@ Now you are ready to upload the file to Dropbox with the following step in your 
     dropbox-refresh-token: ${{ secrets.DROPBOX_REFRESH_TOKEN }}
     source-path: <Path to local file in the github action container space>
     target-path: <Path to the file in the Dropbox. That is supposed to be under the app folder>
+    write-mode:  Write mode to upload the file. The default is 'add'. See more detail here. https://www.dropbox.com/developers/documentation/http/documentation#files-upload
 ```
 
 
