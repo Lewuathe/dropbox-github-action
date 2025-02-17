@@ -36,7 +36,7 @@ runs:
       run: |
         curl -X POST https://content.dropboxapi.com/2/files/upload \
           --header "Authorization: Bearer ${{ steps.get-access-token.outputs.access_token }}" \
-          --header "Dropbox-API-Arg: {\"path\":\"${{ inputs.target-path }}\",\"mode\":\"${{ inputs.write-mode }}\""}" \
+          --header "Dropbox-API-Arg: {\"path\":\"${{ inputs.target-path }}\",\"mode\":\"${{ inputs.write-mode }}\"}" \
           --header  "Content-Type: application/octet-stream" \
           --data-binary @${{ inputs.source-path }}
         
