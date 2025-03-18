@@ -75,7 +75,7 @@ Now you are ready to upload the file to Dropbox with the following step in your 
 
 ```yaml
 - name: Upload to Dropbox
-  uses: Lewuathe/dropbox-github-action@v1
+  uses: Lewuathe/dropbox-github-action@v1.0.3
   with:
     dropbox-app-key: ${{ secrets.DROPBOX_APP_KEY }}
     dropbox-app-secret: ${{ secrets.DROPBOX_APP_SECRET }}
